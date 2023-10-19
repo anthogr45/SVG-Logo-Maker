@@ -1,5 +1,8 @@
 const inquirer = require('inquirer');
 // const SVG = require('svg.js');
+
+
+
 let logoChar = '';
 let logoShape = '';
 let colorname = '';
@@ -11,13 +14,19 @@ let shapehexCode = '';
 
   
 function initOne () {
-  return new Promise ((resolve, reject) => {   
+  // return new Promise ((resolve, reject) => {   
    inquirer
    .prompt ([ 
     {
      type: 'input',
      name: 'logo_letters',
      message: 'Type 3 letters in uppercase for the LOGO'
+    },
+    {
+      type: 'list',
+      name: 'shapeType',
+      message: 'Select a shape for the Logo:',
+      choices: ['circle', 'triangle', 'square'],
     },
     
     {
@@ -33,6 +42,7 @@ function initOne () {
   .then((answers) => {
     const colorType = answers.colorType;
     logoChar = answers.logo_letters;
+    logoShape = answers.shapeType;
 
     if (colorType === 'Color Name') {
       // Prompt for color name
@@ -41,12 +51,20 @@ function initOne () {
           {
             type: 'list',
             name: 'colorName',
+            message: 'Choose a color for the 3 letters:',
+            choices: ['Red', 'Green', 'Blue', 'Yellow', 'Pink', 'Black', 'White', 'Brown' ]
+          },
+          {
+            type: 'list',
+            name: 'shapecolor',
+            message: 'Choose a color for the Logo shape:',
             choices: ['Red', 'Green', 'Blue', 'Yellow', 'Pink', 'Black', 'White', 'Brown' ]
           },
 
         ])
         .then((answers) => {
           colorname = answers.colorName;
+          shapecolorName = answers.shapecolor;
         });
     } else if (colorType === 'Hexadecimal Code'){
        // Prompt for hexadecimal code
@@ -54,79 +72,33 @@ function initOne () {
        .prompt([
          {
            type: 'input',
-           name: 'hexCode',
-           message: 'Enter a hexadecimal code:',
+           name: 'letterHexCode',
+           message: 'Enter a color hexadecimal code for the Logo letters:',
          },
-       ])
-       .then((answers) => {
-         hexCode = answers.hexCode;                 
-       });
-      }
-      
-  })
-  resolve();
-});
-
-}
-
-async function initTwo () {
-  inquirer
-    .prompt([
-    {
-      type: 'list',
-      name: 'shapeType',
-      message: 'Select a shape for the Logo:',
-      choices: ['circle', 'triangle', 'square'],
-    },
-    {
-      type: 'list',
-      name: 'shapeColor',
-      message: 'Choose the type of color for the Logo shape:',
-      choices: ['Color Name', 'Hexadecimal Code'],
-    },
-  ])
-  .then((answers) => {
-    const shapeColorType = answers.shapeColor;
-    logoShape = answers.shapType;
-
-    if (shapeColorType === 'Color Name') {
-      // Prompt for color name
-      inquirer
-        .prompt([
-          {
-            type: 'list',
-            name: 'shapecolorName',
-            choices: ['Red', 'Green', 'Blue', 'Yellow', 'Pink', 'Black', 'White', 'Brown' ]
-          },
-        ])
-        .then((answers) => {
-          shapecolorName = answers.colorname;
-        });
-    } else if (shapeColorType === 'Hexadecimal Code'){
-       // Prompt for hexadecimal code
-       inquirer
-       .prompt([
          {
            type: 'input',
-           name: 'shapehexCode',
+           name: 'shapehex',
            message: 'Enter a hexadecimal code for the shape:',
          },
        ])
        .then((answers) => {
-         shapehexCode = answers.shapehexCode;                 
+         hexCode = answers.letterHexCode;  
+         shapehexCode  = answers.shapehex;                   
        });
       }
       
-  });
+  })
+  
 }
 
-// Call initOne and use await to wait for its completion
-async function main () {
-  await initOne();
-  initTwo();
-}
 
-main();
+
+
+  initOne();
+  // initTwo();
+// }
+
+// main();
 
 
 
@@ -198,9 +170,6 @@ main();
   
  
 
-
-  // inquirer.prompt(questions1).then((answers) => { });
-  // inquirer.prompt(questions2).then((answers) => { });
 
 
 
