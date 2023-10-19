@@ -1,6 +1,8 @@
 
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
-    <circle cx="150" cy="100" r="360" fill="red" />
-    <text x="50%" y="50%" text-anchor="middle" dy="0.3em" font-size="15" fill="green">ABC</text>
+    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+    <g transform="translate(50,50)"> <!-- Translate the group to center (50,50) -->
+    <rect x="50" y="50" width="200" height="200" fill="pink" />
+    <text x="50%" y="50%" text-anchor="middle" dy="0.3em" font-size="15" fill="blue">ABC</text>
+    </g>
    </svg>
    

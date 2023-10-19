@@ -57,20 +57,22 @@ function initOne () {
     let shapeObj;
     switch (logoShape) {
        case 'Circle':
-         shapeObj = new Circle(360, shapeColor);
+         shapeObj = new Circle(shapeColor);
          break;
        case 'Triangle' :
-         shapeObj = new Triangle(100, shapeColor);
+         shapeObj = new Triangle(shapeColor);
          break;
        case 'Square' :
-         shapeObj = new Square(100, 100, shapeColor);
+         shapeObj = new Square(shapeColor);
          break;
     }
 
     const svgContent = `
-    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
+    <g transform="translate(50,50)"> <!-- Translate the group to center (50,50) -->
     ${shapeObj.draw()}
-    <text x="50%" y="50%" text-anchor="middle" dy="0.3em" font-size="15" fill="${textColor}">ABC</text>
+    <text x="50%" y="50%" text-anchor="middle" dy="0.3em" font-size="15" fill="${textColor}">${logoChar}</text>
+    </g>
    </svg>
    `;
    
