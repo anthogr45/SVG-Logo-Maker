@@ -4,9 +4,9 @@
 # Logo Generator
 Generates a readme based on the user inputs
 
-# Carleton University Coding Bootcamp Challenge Assignment 09
+# Carleton University Coding Bootcamp Challenge 
 
-## Bootcamp Module 09 Individual Challenge Assignment - SVG Logo Generator
+## Bootcamp Module 10 Individual Challenge Assignment - SVG Logo Generator
 
 This Command line application will prompt the user with details required to create the logo. User will be requuested for 3 characters and a choice of color for the characters. choice of colors can be submitted either with the color name or with the hexadecimal code. Thereafter the user will be requested for a type shape with a shape color for the logo (Circle, Triangle or Square). Once all information is collected, the application will generate the Logo which will be saved in a SVG file.
 
